@@ -1,8 +1,10 @@
+from sqlalchemy import Text
 from datetime import datetime
-import uuid
 
-from sqlalchemy import DateTime, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import Integer
+from sqlalchemy import String
 
 from app.database.base import Base
 
@@ -10,33 +12,22 @@ from app.database.base import Base
 class Document(Base):
     __tablename__ = "documents"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
 
-    document_uuid: Mapped[str] = mapped_column(
-        String,
-        default=lambda: str(uuid.uuid4()),
-        unique=True,
-        nullable=False,
-    )
+    document_uuid = Column(String, unique=True, nullable=False)
 
-    filename: Mapped[str] = mapped_column(String, nullable=False)
+    filename = Column(String, nullable=False)
 
-    original_filename: Mapped[str] = mapped_column(String, nullable=False)
+    original_filename = Column(String, nullable=False)
 
-    file_path: Mapped[str] = mapped_column(String, nullable=False)
+    file_path = Column(String, nullable=False)
 
-    file_type: Mapped[str] = mapped_column(String, nullable=False)
+    file_type = Column(String, nullable=False)
 
-    file_size: Mapped[int] = mapped_column(Integer, nullable=False)
+    file_size = Column(Integer, nullable=False)
 
-    status: Mapped[str] = mapped_column(
-        String,
-        default="UPLOADED",
-        nullable=False,
-    )
+    status = Column(String, default="uploaded")
 
-    uploaded_at: Mapped[datetime] = mapped_column(
-        DateTime,
-        default=datetime.utcnow,
-        nullable=False,
-    )
+    content = Column(Text)
+
+    uploaded_at = Column(DateTime, default=datetime.utcnow)

@@ -1,24 +1,38 @@
-# Virtual Environment
-.venv/
-
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+.venv/
+venv/
 
-# Environment
+# Environment variables
 .env
 
-# SQLite database
-support_docs.db
+# Database
+*.db
+*.sqlite
+*.sqlite3
 
 # ChromaDB
 data/chroma_db/
+backend/data/chroma_db/
 
-# Cache
+# Uploaded documents
+data/uploads/
+backend/data/uploads/
+
+# Generated data
 data/cache/
+data/embeddings/
+data/processed/
 
-# VS Code
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# IDE
 .vscode/
+.idea/
 
-# Logs
-*.log
+# OS
+.DS_Store
+Thumbs.db
